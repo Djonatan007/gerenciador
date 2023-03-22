@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gerenciador/pages/filtro_page.dart';
 import 'package:gerenciador/pages/lista_tarefas.dart';
 
 void main() {
@@ -19,6 +20,9 @@ class AppGerenciadorTareas extends StatelessWidget {
         primarySwatch: Colors.lightGreen,
       ),
       home: ListaTarefa(),
+      routes: {
+        FiltroPage.routeName: (BuildContext context) => FiltroPage(),
+      },
     );
   }
 }

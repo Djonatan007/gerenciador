@@ -3,6 +3,7 @@ import 'dart:html';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gerenciador/model/tarefa.dart';
+import 'package:gerenciador/pages/filtro_page.dart';
 
 import 'form_new_task.dart';
 
@@ -60,10 +61,10 @@ class _ListaTarefasState extends State<ListaTarefa> {
                         final novaTarefa = key.currentState!.newTask;
                         if (index == null) {
                           novaTarefa.id = ++ _ultimoId;
+                          tarefas.add(novaTarefa);
                         } else {
                           tarefas[index] = novaTarefa;
                         }
-                        tarefas.add(novaTarefa);
                       });
                       Navigator.of(context).pop();
                     }
@@ -114,7 +115,7 @@ class _ListaTarefasState extends State<ListaTarefa> {
       title: const Text('Gerenciador de Tarefas'),
       actions: [
         IconButton(
-            onPressed: () {},
+            onPressed: _abrirPaginaFiltro,
             icon: const Icon(Icons.filter_list)),
       ],
     );
@@ -179,5 +180,14 @@ class _ListaTarefasState extends State<ListaTarefa> {
           )
       )
     ];
+  }
+
+  void _abrirPaginaFiltro() {
+    final navigator = Navigator.of(context);
+    navigator.pushNamed(FiltroPage.routeName).then((alterouValores) {
+      if (alterouValores == true) {
+        ///TODO filtro
+      }
+    });
   }
 }
